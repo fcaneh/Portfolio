@@ -58,3 +58,358 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+.hero-section {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #111827, #1f2937);
+    color: white;
+    border-radius: 24px;
+    margin-bottom: 2rem;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.eyebrow {
+    color: #38bdf8;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.hero-content h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #cbd5e1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text {
+    max-width: 700px;
+    font-size: 1.15rem;
+    color: #e5e7eb;
+    margin-bottom: 2rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.9rem 1.4rem;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-primary {
+    background: #38bdf8;
+    color: #0f172a;
+}
+
+.btn-secondary {
+    border: 1px solid #94a3b8;
+    color: white;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.cards-section {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.info-card {
+    padding: 1.5rem;
+    border-radius: 20px;
+    background: white;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.info-card h3 {
+    margin-bottom: 0.75rem;
+    color: #111827;
+}
+
+.info-card p {
+    color: #4b5563;
+    margin: 0;
+}
+
+@media (max-width: 900px) {
+    .cards-section {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: white;
+    padding: 1.8rem;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.project-card h2 {
+    margin-bottom: 1rem;
+}
+
+.project-card ul {
+    margin: 1rem 0;
+    padding-left: 1rem;
+}
+
+.project-card li {
+    margin-bottom: 0.4rem;
+}
+
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.project-card .btn-secondary {
+    color: #111827;
+    border: 1px solid #cbd5e1;
+    background: #f9fafb;
+}
+
+.project-card .btn-secondary:hover {
+    background: #e5e7eb;
+}
+
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.experience-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.experience-card h2 {
+    margin-bottom: 0.3rem;
+}
+
+.date {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-bottom: 0.8rem;
+}
+
+.experience-card ul {
+    padding-left: 1rem;
+}
+
+.experience-card li {
+    margin-bottom: 0.4rem;
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+}
+
+.role-badge {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.experience-section {
+    margin-top: 1rem;
+}
+
+.experience-section h3 {
+    font-size: 1rem;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tech-list span {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.project-date {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.project-badge {
+    background: #ecfeff;
+    color: #0e7490;
+    border: 1px solid #67e8f9;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+body {
+    background: #f8fafc;
+}
+
+.page-title {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.project-card:hover,
+.experience-card:hover,
+.info-card:hover {
+    transform: translateY(-4px);
+    transition: 0.2s ease;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+h2 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.decorated-page {
+    position: relative;
+    min-height: calc(100vh - 2rem);
+    padding-right: 3.5rem;
+}
+
+.decorated-page::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    width: 7px;
+    height: 100%;
+    min-height: 100%;
+    border-radius: 999px;
+    background: var(--section-color);
+    box-shadow: 0 0 18px var(--section-glow);
+}
+
+.wave-line {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    width: 80px;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.wave-line path {
+    fill: none;
+    stroke: var(--section-color);
+    stroke-width: 6;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 10px var(--section-glow));
+}
+
+.page-home {
+    --section-color: #06b6d4;
+    --section-glow: rgba(6, 182, 212, 0.45);
+}
+
+.page-experiences {
+    --section-color: #2563eb;
+    --section-glow: rgba(37, 99, 235, 0.45);
+}
+
+.page-projects {
+    --section-color: #a855f7;
+    --section-glow: rgba(168, 85, 247, 0.5);
+}
+
+.page-contact {
+    --section-color: #10b981;
+    --section-glow: rgba(16, 185, 129, 0.45);
+}
+
+@keyframes softWave {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(4px);
+    }
+
+    50% {
+        transform: translateX(0);
+    }
+
+    75% {
+        transform: translateX(-4px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
