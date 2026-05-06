@@ -1,0 +1,177 @@
+@page "/experiences"
+@using Microsoft.JSInterop
+@inject IJSRuntime JS
+
+<PageTitle>Expériences</PageTitle>
+<div class="decorated-page page-experiences">
+    @* <svg class="wave-line" viewBox="0 0 80 100" preserveAspectRatio="none">
+        <path id="wavePath" d="M40 0 C40 30 40 70 40 100" />
+    </svg> *@
+
+    <h1 class="page-title">Expériences professionnelles</h1>
+
+    <div class="timeline">
+
+        <!-- LundiMatin -->
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h2>💼 LundiMatin</h2>
+                    <p class="date">Octobre 2024 – Juillet 2025</p>
+                </div>
+                <span class="role-badge">Développeur ASP / PHP / API</span>
+            </div>
+
+            <div class="experience-section">
+                <h3>Technologies</h3>
+                <div class="tech-list">
+                    <span>ASP</span>
+                    <span>PHP</span>
+                    <span>NestJS</span>
+                    <span>SQL Server</span>
+                    <span>API REST</span>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Missions</h3>
+                <ul>
+                    <li>Maintenance de l’ERP Oxatis</li>
+                    <li>Correction de bugs applicatifs</li>
+                    <li>Participation à une migration vers une nouvelle architecture</li>
+                    <li>Création d’API PHP / NestJS</li>
+                    <li>Intégration avec une application legacy</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MonChasseurImmo -->
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h2>💼 MonChasseurImmo</h2>
+                    <p class="date">Août 2023 – Décembre 2023</p>
+                </div>
+                <span class="role-badge">Développeur .NET</span>
+            </div>
+
+            <div class="experience-section">
+                <h3>Technologies</h3>
+                <div class="tech-list">
+                    <span>C#</span>
+                    <span>.NET</span>
+                    <span>SQL</span>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Missions</h3>
+                <ul>
+                    <li>Développement d’applications .NET</li>
+                    <li>Participation aux évolutions fonctionnelles</li>
+                    <li>Maintenance et amélioration du code existant</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Smag -->
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h2>💼 Smag</h2>
+                    <p class="date">Novembre 2022 – Avril 2023</p>
+                </div>
+                <span class="role-badge">Développeur .NET</span>
+            </div>
+
+            <div class="experience-section">
+                <h3>Technologies</h3>
+                <div class="tech-list">
+                    <span>C#</span>
+                    <span>.NET</span>
+                    <span>SQL</span>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Missions</h3>
+                <ul>
+                    <li>Développement backend .NET</li>
+                    <li>Maintenance applicative</li>
+                    <li>Correction de bugs</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Acelys -->
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h2>💼 Acelys</h2>
+                    <p class="date">Juillet 2021 – Novembre 2022</p>
+                </div>
+                <span class="role-badge">Développeur .NET</span>
+            </div>
+
+            <div class="experience-section">
+                <h3>Technologies</h3>
+                <div class="tech-list">
+                    <span>C#</span>
+                    <span>.NET</span>
+                    <span>SQL</span>
+                    <span>Agile</span>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Missions</h3>
+                <ul>
+                    <li>Développement logiciel</li>
+                    <li>Participation à des projets en équipe Agile</li>
+                    <li>Maintenance et évolution des applications</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Projets personnels -->
+        <div class="experience-card">
+            <div class="experience-header">
+                <div>
+                    <h2>🧑‍💻 Projets personnels</h2>
+                    <p class="date">2023 – 2024</p>
+                </div>
+                <span class="role-badge">Autoformation</span>
+            </div>
+
+            <div class="experience-section">
+                <h3>Technologies</h3>
+                <div class="tech-list">
+                    <span>C#</span>
+                    <span>.NET</span>
+                    <span>Angular</span>
+                    <span>Java</span>
+                </div>
+            </div>
+
+            <div class="experience-section">
+                <h3>Missions</h3>
+                <ul>
+                    <li>Développement de projets personnels en C# .NET</li>
+                    <li>Apprentissage Angular</li>
+                    <li>Initiation au langage Java</li>
+                    <li>Approfondissement des concepts de programmation</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("initWaveLine");
+        }
+    }
+}
