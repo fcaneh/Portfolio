@@ -1,0 +1,60 @@
+@using Portfolio.Models
+
+<div class="project-card">
+
+    <div class="project-header">
+        <div>
+            <h2>@Project.IconType.ToEmoji() @Project.Name</h2>
+            <p class="project-date">@Project.Period</p>
+        </div>
+
+        <span class="project-badge">Projet personnel</span>
+    </div>
+
+    <p>
+        @Project.Description
+    </p>
+
+    <div class="tech-list">
+        @foreach (var tech in Project.Technologies)
+        {
+            <span>@tech</span>
+        }
+    </div>
+
+    <ul>
+        @foreach (var feature in Project.Features)
+        {
+            <li>@feature</li>
+        }
+    </ul>
+
+    <div class="project-actions">
+
+        @if (!string.IsNullOrWhiteSpace(Project.DownloadLink))
+        {
+            <a class="btn-primary"
+               href="@Project.DownloadLink"
+               target="_blank">
+                Télécharger
+            </a>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(Project.GithubLink))
+        {
+            <a class="btn-secondary"
+               href="@Project.GithubLink"
+               target="_blank">
+                GitHub
+            </a>
+        }
+
+    </div>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public Project Project { get; set; } = new();
+}

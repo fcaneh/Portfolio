@@ -170,12 +170,6 @@ h1:focus {
     margin-bottom: 2rem;
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-}
-
 .project-card {
     background: white;
     padding: 1.8rem;
@@ -411,5 +405,11 @@ h2 {
     100% {
         transform: translateX(0);
     }
+}
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
