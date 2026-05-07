@@ -1,0 +1,42 @@
+@using Portfolio.Models
+
+<div class="experience-card">
+
+    <div class="experience-header">
+        <div>
+            <h2>@Experience.Icon @Experience.Company</h2>
+            <p class="date">@Experience.Period</p>
+        </div>
+
+        <span class="role-badge">@Experience.Role</span>
+    </div>
+
+    <div class="experience-section">
+        <h3>Technologies</h3>
+
+        <div class="tech-list">
+            @foreach (var tech in Experience.Technologies)
+            {
+                <span>@tech</span>
+            }
+        </div>
+    </div>
+
+    <div class="experience-section">
+        <h3>Missions</h3>
+
+        <ul>
+            @foreach (var mission in Experience.Missions)
+            {
+                <li>@mission</li>
+            }
+        </ul>
+    </div>
+
+</div>
+
+@code {
+
+    [Parameter]
+    public Experience Experience { get; set; } = new();
+}
