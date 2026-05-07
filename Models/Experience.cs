@@ -6,7 +6,7 @@ namespace Portfolio.Models
 {
     public class Experience
     {
-        public string Icon { get; set; } = "💼";
+        public IconType IconType { get; set; } = IconType.Work;
         public string Company { get; set; } = "";
         public string Role { get; set; } = "";
         public string Period { get; set; } = "";

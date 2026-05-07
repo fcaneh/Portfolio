@@ -13,7 +13,7 @@ namespace Portfolio.Data
         {
             new Experience
             {
-                Icon = "💼",
+                IconType = IconType.Work,
                 Company = "LundiMatin",
                 Role = "Développeur ASP / PHP / API",
                 Period = "Octobre 2024 – Juillet 2025",
@@ -37,7 +37,7 @@ namespace Portfolio.Data
 
             new Experience
             {
-                Icon = "💼",
+                IconType = IconType.Work,
                 Company = "MonChasseurImmo",
                 Role = "Développeur .NET",
                 Period = "Août 2023 – Décembre 2023",
@@ -57,7 +57,7 @@ namespace Portfolio.Data
 
             new Experience
             {
-                Icon = "💼",
+                IconType = IconType.Work,
                 Company = "Smag",
                 Role = "Développeur .NET",
                 Period = "Novembre 2022 – Avril 2023",
@@ -77,7 +77,7 @@ namespace Portfolio.Data
 
             new Experience
             {
-                Icon = "💼",
+                IconType = IconType.Work,
                 Company = "Acelys",
                 Role = "Développeur .NET",
                 Period = "Juillet 2021 – Novembre 2022",
@@ -98,7 +98,7 @@ namespace Portfolio.Data
 
             new Experience
             {
-                Icon = "🧑‍💻",
+                IconType = IconType.Developer,
                 Company = "Projets personnels",
                 Role = "Autoformation",
                 Period = "2023 – 2024",
