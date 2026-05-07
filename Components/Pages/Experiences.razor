@@ -1,8 +1,6 @@
 @page "/experiences"
 @using Portfolio.Data
 @using Portfolio.Models
-@using Microsoft.JSInterop
-@inject IJSRuntime JS
 
 @code {
     private List<Experience> experiences = ExperienceRepository.GetExperiences();
@@ -18,50 +16,11 @@
 
     <div class="timeline">
 
-    @foreach (var experience in experiences)
-    {
-        <div class="experience-card">
-            <div class="experience-header">
-                <div>
-                    <h2>@experience.Icon @experience.Company</h2>
-                    <p class="date">@experience.Period</p>
-                </div>
-
-                <span class="role-badge">@experience.Role</span>
-            </div>
-
-            <div class="experience-section">
-                <h3>Technologies</h3>
-                <div class="tech-list">
-                    @foreach (var tech in experience.Technologies)
-                    {
-                        <span>@tech</span>
-                    }
-                </div>
-            </div>
-
-            <div class="experience-section">
-                <h3>Missions</h3>
-                <ul>
-                    @foreach (var mission in experience.Missions)
-                    {
-                        <li>@mission</li>
-                    }
-                </ul>
-            </div>
-        </div>
-    }
+        @foreach (var experience in experiences)
+        {
+            <ExperienceCard Experience="experience" />
+        }
 
     </div>
     
 </div>
-
-@code {
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JS.InvokeVoidAsync("initWaveLine");
-        }
-    }
-}
