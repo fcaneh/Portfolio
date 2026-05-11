@@ -1,5 +1,7 @@
 @page "/contact"
+@rendermode InteractiveServer
 @using Portfolio.Models
+@inject NavigationManager Navigation
 
 <PageTitle>Contact</PageTitle>
 
@@ -17,7 +19,6 @@
           OnValidSubmit="HandleValidSubmit"
           FormName="contactForm">
             <DataAnnotationsValidator />
-            <ValidationSummary />
 
             <div class="form-group">
                 <label>Nom</label>
@@ -37,7 +38,8 @@
                 <ValidationMessage For="@(() => contactMessage.Message)" />
             </div>
 
-            <button class="btn-primary" type="submit">
+            <button class="btn-primary" type="submit" disabled="@isSending">
+                @(isSending ? "Envoi en cours..." : "Envoyer le message")
                 Envoyer le message
             </button>
         </EditForm>
@@ -45,7 +47,8 @@
         @if (isSent)
         {
             <p class="success-message">
-                Merci, ton message est prêt à être envoyé ❤️
+                Gmail a été ouvert avec ton message prérempli.  
+                Vérifie le contenu puis clique sur Envoyer dans Gmail.
             </p>
         }
     </div>
@@ -55,9 +58,31 @@
 @code {
     private ContactMessage contactMessage = new();
     private bool isSent = false;
+    private bool isSending = false;
 
     private void HandleValidSubmit()
     {
+        var subject = Uri.EscapeDataString(
+            $"Contact portfolio - {contactMessage.Name}"
+        );
+
+        var body = Uri.EscapeDataString(
+            $"Nom : {contactMessage.Name}\n" +
+            $"Email : {contactMessage.Email}\n\n" +
+            $"Message :\n{contactMessage.Message}"
+        );
+
+        var gmailUrl =
+            $"https://mail.google.com/mail/?view=cm&fs=1" +
+            $"&to=fcanehan.jobs@gmail.com" +
+            $"&su={subject}" +
+            $"&body={body}";
+
+        Navigation.NavigateTo(
+            gmailUrl,
+            forceLoad: true
+        );
+
         isSent = true;
     }
 }
