@@ -1,6 +1,8 @@
 @page "/contact"
 @rendermode InteractiveServer
 @using Portfolio.Models
+@using Portfolio.Services
+@inject ContactEmailService ContactEmailService
 @inject NavigationManager Navigation
 
 <PageTitle>Contact</PageTitle>
@@ -17,6 +19,7 @@
 
         <EditForm Model="contactMessage"
           OnValidSubmit="HandleValidSubmit"
+          OnInvalidSubmit="HandleInvalidSubmit"
           FormName="contactForm">
             <DataAnnotationsValidator />
 
@@ -38,19 +41,25 @@
                 <ValidationMessage For="@(() => contactMessage.Message)" />
             </div>
 
-            <button class="btn-primary" type="submit" disabled="@isSending">
+            <button class="btn-primary" type="submit" disabled="@(isSending || isSent)">
                 @(isSending ? "Envoi en cours..." : "Envoyer le message")
-                Envoyer le message
             </button>
         </EditForm>
 
         @if (isSent)
         {
             <p class="success-message">
-                Gmail a été ouvert avec ton message prérempli.  
-                Vérifie le contenu puis clique sur Envoyer dans Gmail.
+                Message envoyé avec succès ! Merci pour votre contact ❤️
             </p>
         }
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <p class="error-message">
+                @errorMessage
+            </p>
+        }
+
     </div>
 
 </div>
@@ -59,30 +68,36 @@
     private ContactMessage contactMessage = new();
     private bool isSent = false;
     private bool isSending = false;
+    private string? errorMessage;
 
-    private void HandleValidSubmit()
+    private async Task HandleValidSubmit()
     {
-        var subject = Uri.EscapeDataString(
-            $"Contact portfolio - {contactMessage.Name}"
-        );
+        if(isSending || isSent)
+            return;
 
-        var body = Uri.EscapeDataString(
-            $"Nom : {contactMessage.Name}\n" +
-            $"Email : {contactMessage.Email}\n\n" +
-            $"Message :\n{contactMessage.Message}"
-        );
+        isSending = true;
+        isSent = false;
+        errorMessage = null;
 
-        var gmailUrl =
-            $"https://mail.google.com/mail/?view=cm&fs=1" +
-            $"&to=fcanehan.jobs@gmail.com" +
-            $"&su={subject}" +
-            $"&body={body}";
+        try
+        {        
+            await ContactEmailService.SendAsync(contactMessage);
+            isSent = true;
+            contactMessage = new();
+        }
+        catch (Exception ex)
+        {
+         
+            errorMessage = $"Erreur : {ex.Message}";
+        }
+        finally
+        {
+            isSending = false;
+        }
+    }
 
-        Navigation.NavigateTo(
-            gmailUrl,
-            forceLoad: true
-        );
-
-        isSent = true;
+    private void HandleInvalidSubmit()
+    {
+        Console.WriteLine("FORMULAIRE INVALIDE");
     }
 }
