@@ -1,10 +1,22 @@
 using Portfolio.Components;
+using Portfolio.Services;
+using Resend;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddOptions();
+builder.Services.AddHttpClient<ResendClient>();
+builder.Services.Configure<ResendClientOptions>(options =>
+{
+    options.ApiToken = Environment.GetEnvironmentVariable("RESEND_APITOKEN") ?? throw new InvalidOperationException("Resend API key is not set in environment variables.");
+});
+
+builder.Services.AddTransient<IResend, ResendClient>();
+builder.Services.AddScoped<ContactEmailService>();
 
 var app = builder.Build();
 

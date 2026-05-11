@@ -413,3 +413,66 @@ h2 {
     gap: 2rem;
 }
 
+
+.contact-card {
+    max-width: 760px;
+    background: white;
+    padding: 2rem;
+    border-radius: 22px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #111827;
+}
+
+.form-control {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    font-size: 1rem;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15);
+}
+
+.message-area {
+    min-height: 160px;
+    resize: vertical;
+}
+
+.validation-message {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.success-message {
+    margin-top: 1rem;
+    color: #047857;
+    font-weight: 700;
+}
+
+.validation-message {
+    color: #dc2626;
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+    display: block;
+}
+
+.validation-summary-errors {
+    color: #dc2626;
+    margin-bottom: 1rem;
+}

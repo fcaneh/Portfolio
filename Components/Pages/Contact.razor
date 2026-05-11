@@ -1,0 +1,103 @@
+@page "/contact"
+@rendermode InteractiveServer
+@using Portfolio.Models
+@using Portfolio.Services
+@inject ContactEmailService ContactEmailService
+@inject NavigationManager Navigation
+
+<PageTitle>Contact</PageTitle>
+
+<div class="decorated-page page-contact">
+
+    <h1 class="page-title">Contact</h1>
+
+    <div class="contact-card">
+        <p>
+            Tu peux me contacter pour une opportunité professionnelle,
+            une question sur mes projets ou un échange autour du développement.
+        </p>
+
+        <EditForm Model="contactMessage"
+          OnValidSubmit="HandleValidSubmit"
+          OnInvalidSubmit="HandleInvalidSubmit"
+          FormName="contactForm">
+            <DataAnnotationsValidator />
+
+            <div class="form-group">
+                <label>Nom</label>
+                <InputText class="form-control" @bind-Value="contactMessage.Name" />
+                <ValidationMessage For="@(() => contactMessage.Name)" />
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <InputText class="form-control" @bind-Value="contactMessage.Email" />
+                <ValidationMessage For="@(() => contactMessage.Email)" />
+            </div>
+
+            <div class="form-group">
+                <label>Message</label>
+                <InputTextArea class="form-control message-area" @bind-Value="contactMessage.Message" />
+                <ValidationMessage For="@(() => contactMessage.Message)" />
+            </div>
+
+            <button class="btn-primary" type="submit" disabled="@(isSending || isSent)">
+                @(isSending ? "Envoi en cours..." : "Envoyer le message")
+            </button>
+        </EditForm>
+
+        @if (isSent)
+        {
+            <p class="success-message">
+                Message envoyé avec succès ! Merci pour votre contact ❤️
+            </p>
+        }
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <p class="error-message">
+                @errorMessage
+            </p>
+        }
+
+    </div>
+
+</div>
+
+@code {
+    private ContactMessage contactMessage = new();
+    private bool isSent = false;
+    private bool isSending = false;
+    private string? errorMessage;
+
+    private async Task HandleValidSubmit()
+    {
+        if(isSending || isSent)
+            return;
+
+        isSending = true;
+        isSent = false;
+        errorMessage = null;
+
+        try
+        {        
+            await ContactEmailService.SendAsync(contactMessage);
+            isSent = true;
+            contactMessage = new();
+        }
+        catch (Exception ex)
+        {
+         
+            errorMessage = $"Erreur : {ex.Message}";
+        }
+        finally
+        {
+            isSending = false;
+        }
+    }
+
+    private void HandleInvalidSubmit()
+    {
+        Console.WriteLine("FORMULAIRE INVALIDE");
+    }
+}
